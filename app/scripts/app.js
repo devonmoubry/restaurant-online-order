@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import welcome from './welcome.js';
+import menu from './menu.js';
 export default function app() {
 
   const initialState = {
@@ -7,21 +8,31 @@ export default function app() {
     menu: []
   };
 
-  const appReducer = function( state, action ) {
+  const appReducer = function( currentState, action ) {
 
-    if ( state === undefined ) {
-      state = initialState;
+    if ( currentState === undefined ) {
+      currentState = initialState;
     }
 
     switch ( action.type ) {
-      case "TESTING":
-        console.log('It works!');
-        console.log(state);
-        return state;
+      case "LOAD_MENU":
+        $.ajax({
+           type: 'GET',
+           url: 'https://tiy-austin-front-end-engineering.github.io/restaurantApi/cafe.json',
+           datatype: 'jsonp',
+           success: function(data, status, xhr) {
+             console.log(data);
+           }
+        })
+        return currentState;
+
+      // case "MENU_LOADED":
 
       default:
-        return state;
+        return currentState;
     }
+
+};
 
   const render = function () {
     let state = store.getState();
@@ -31,9 +42,8 @@ export default function app() {
     const store = createStore( appReducer );
 
     store.subscribe( render );
-    store.dispatch({ type: "TESTING" });
+    store.dispatch({ type: "LOAD_MENU" });
     // console.log(createStore(function (state = [], action) {
     //   return state;
     // }));
   }
-}

@@ -1,11 +1,29 @@
 export default function ( store ) {
   console.log('Menu');
-  let menu = store.getState().menu;
-  let $html = $(`<section id="menu">
-    <p>Cheeseburger, Chips, Pepsi</p>
-  </section>`);
+  let menuData = store.getState().menu;
 
-  console.log(menu);
+  let $menu = $(`<section id="menu"></section>`);
 
-  $('#welcome').append($html);
+  for (var key in menuData) {
+    var $category = $(`
+      <div class="category">
+        <h2>${key}</h2>
+        <ul class="items"></ul>
+      </div>
+    `);
+
+    for (var i = 0; i < menuData[key].length; i++) {
+      var $item = $(`
+        <li>${menuData[key][i]['item']}</li>
+      `);
+      $category.find('.items').append($item);
+    }
+
+
+    $menu.append($category);
+
+    console.log(key, menuData[key]);
+  }
+
+  $('#welcome').append($menu);
 }

@@ -30,6 +30,10 @@ Cafe menu: https://tiy-austin-front-end-engineering.github.io/restaurantApi/cafe
 Pub menu: https://tiy-austin-front-end-engineering.github.io/restaurantApi/pub.json
 The Noun Project has cool icons you can use as logos if you're looking to take a break from coding
 
+View Sketch
+-----------
+![alt tag](/Users/devon/Documents/tiy/day-26/app/images/views.jpg)
+
 How to Build
 ------------
 1. `cd directory`

@@ -5,6 +5,5 @@ export default function ( store ) {
     <h1>Welcome to The Olympia Cafe</h1>
   </section>`);
 
-  return $html;
-
+  $('#app').append($html);
 }

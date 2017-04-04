@@ -21,12 +21,17 @@ export default function app() {
            url: 'https://tiy-austin-front-end-engineering.github.io/restaurantApi/cafe.json',
            datatype: 'jsonp',
            success: function(data, status, xhr) {
-             console.log(data);
+             store.dispatch({ type: "MENU_LOADED", menu: data});
            }
         })
         return currentState;
 
-      // case "MENU_LOADED":
+      case "MENU_LOADED":
+        var newState = {
+          menu: action.menu,
+          view: menu
+        }
+        return Object.assign({}, currentState, newState);
 
       default:
         return currentState;
@@ -36,7 +41,7 @@ export default function app() {
 
   const render = function () {
     let state = store.getState();
-    $('#app').html(state.view(store));
+    state.view(store);
   };
 
     const store = createStore( appReducer );

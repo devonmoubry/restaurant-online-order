@@ -5,9 +5,10 @@ export default function app() {
 
   const initialState = {
     view: welcome,
-    menu: []
+    menu: [],
+    order: []
   };
-
+  const url = 'http://tiny-za-server.herokuapp.com/collections/devonmoubry-olympiacafe';
   const appReducer = function( currentState, action ) {
 
     if ( currentState === undefined ) {
@@ -31,6 +32,15 @@ export default function app() {
           menu: action.menu,
           view: menu
         }
+        return Object.assign({}, currentState, newState);
+
+      case "ADD_MENU_ITEM":
+        var newOrder = currentState.order;
+        newOrder.push(action.orderItem);
+        var newState = {
+          order: newOrder
+        };
+        console.log("new state:", newState);
         return Object.assign({}, currentState, newState);
 
       default:

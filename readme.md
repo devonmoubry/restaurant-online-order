@@ -32,11 +32,11 @@ The Noun Project has cool icons you can use as logos if you're looking to take a
 
 How to Build
 ------------
-`cd directory`
-`npm run build`
-`tree dist`
-`cd dist`
-`surge .`
+1. `cd directory`
+2. `npm run build`
+3. `tree dist`
+4. `cd dist`
+5. `surge .`
 
 Created by Devon Moubry. devon@moubry.com
 ---------------------------------------------------------------------
